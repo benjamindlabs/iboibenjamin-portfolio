@@ -206,4 +206,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ⭐ **Star this repository** if you found it helpful or interesting!
 
-Built with ❤️ by Iboi Benjamin using React, TypeScript, and modern web technologies.
+Built with ❤️ by Iboi Benjamin 
