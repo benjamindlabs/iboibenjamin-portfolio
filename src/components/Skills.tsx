@@ -7,62 +7,64 @@ const Skills = () => {
     {
       title: "Frontend",
       skills: [
-        { name: "React 18", level: 5, color: "#61DAFB" },
-        { name: "Next.js 14", level: 4, color: "#000000" },
-        { name: "TypeScript", level: 4, color: "#3178C6" },
-        { name: "Vite", level: 4, color: "#646CFF" },
-        { name: "Tailwind CSS", level: 5, color: "#06B6D4" },
+        { name: "React 18", color: "#61DAFB" },
+        { name: "Next.js 14", color: "#000000" },
+        { name: "TypeScript", color: "#3178C6" },
+        { name: "Vite", color: "#646CFF" },
+        { name: "Tailwind CSS", color: "#06B6D4" },
       ]
     },
     {
       title: "Backend", 
       skills: [
-        { name: "Supabase", level: 4, color: "#3ECF8E" },
-        { name: "PHP", level: 4, color: "#777BB4" },
-        { name: "Node.js", level: 3, color: "#339933" },
-        { name: "MySQL", level: 4, color: "#4479A1" },
-        { name: "PostgreSQL", level: 3, color: "#336791" },
+        { name: "Supabase", color: "#3ECF8E" },
+        { name: "PHP", color: "#777BB4" },
+        { name: "Node.js", color: "#339933" },
+        { name: "MySQL", color: "#4479A1" },
+        { name: "PostgreSQL", color: "#336791" },
+      ]
+    },
+    {
+      title: "AI & Automation",
+      skills: [
+        { name: "Claude API", color: "#D97706" },
+        { name: "OpenAI GPT", color: "#10B981" },
+        { name: "Google Gemini", color: "#2563EB" },
+        { name: "Prompt Engineering", color: "#8B5CF6" },
+        { name: "AI Video Generation (Kling/Veo3)", color: "#EC4899" },
+        { name: "AI Image Generation", color: "#F43F5E" },
+        { name: "n8n", color: "#FF6C37" },
+        { name: "LLM Integration", color: "#14B8A6" },
       ]
     },
     {
       title: "Web3 & Blockchain",
       skills: [
-        { name: "Solidity", level: 3, color: "#363636" },
-        { name: "Ethers.js", level: 3, color: "#29ABE2" },
-        { name: "Hardhat", level: 3, color: "#FFF100" },
-        { name: "IPFS", level: 3, color: "#65C2CB" },
+        { name: "Solidity", color: "#363636" },
+        { name: "Ethers.js", color: "#29ABE2" },
+        { name: "Hardhat", color: "#FFF100" },
+        { name: "IPFS", color: "#65C2CB" },
       ]
     },
     {
       title: "UI Libraries",
       skills: [
-        { name: "shadcn/ui", level: 5, color: "#000000" },
-        { name: "Radix UI", level: 4, color: "#161618" },
-        { name: "Headless UI", level: 4, color: "#66A3FF" },
-        { name: "Flowbite", level: 3, color: "#1C64F2" },
+        { name: "shadcn/ui", color: "#000000" },
+        { name: "Radix UI", color: "#161618" },
+        { name: "Headless UI", color: "#66A3FF" },
+        { name: "Flowbite", color: "#1C64F2" },
       ]
     },
     {
       title: "Dev Tools",
       skills: [
-        { name: "Git/GitHub", level: 4, color: "#F05032" },
-        { name: "Vercel", level: 4, color: "#000000" },
-        { name: "ESLint", level: 4, color: "#4B32C3" },
-        { name: "Cursor", level: 4, color: "#000000" },
+        { name: "Git/GitHub", color: "#F05032" },
+        { name: "Vercel", color: "#000000" },
+        { name: "ESLint", color: "#4B32C3" },
+        { name: "Cursor", color: "#000000" },
       ]
     }
   ];
-
-  const renderStars = (level) => {
-    return [...Array(5)].map((_, i) => (
-      <span
-        key={i}
-        className={`text-sm ${i < level ? 'text-yellow-400' : 'text-gray-600 dark:text-gray-500'}`}
-      >
-        ★
-      </span>
-    ));
-  };
 
   return (
     <section id="skills" className="relative z-10">
@@ -88,25 +90,17 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div 
                     key={skillIndex}
-                    className="group cursor-pointer"
+                    className="group cursor-pointer flex items-center gap-2"
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-2">
-                        <div 
-                          className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white group-hover:scale-110 transition-transform duration-200"
-                          style={{ backgroundColor: skill.color }}
-                        >
-                          {skill.name.charAt(0)}
-                        </div>
-                        <span className="text-gray-200 dark:text-gray-100 text-sm">
-                          {skill.name}
-                        </span>
-                      </div>
+                    <div 
+                      className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white group-hover:scale-110 transition-transform duration-200 flex-shrink-0"
+                      style={{ backgroundColor: skill.color }}
+                    >
+                      {skill.name.charAt(0)}
                     </div>
-                    
-                    <div className="flex items-center gap-1 ml-7">
-                      {renderStars(skill.level)}
-                    </div>
+                    <span className="text-gray-200 dark:text-gray-100 text-sm">
+                      {skill.name}
+                    </span>
                   </div>
                 ))}
               </div>

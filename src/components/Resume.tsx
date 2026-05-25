@@ -1,229 +1,278 @@
+import React, { useRef } from "react";
+import html2pdf from "html2pdf.js";
+import "../resume.css";
 
-import React, { useRef } from 'react';
-import html2pdf from 'html2pdf.js';
-import { Download, Phone, Mail, MapPin, Github } from 'lucide-react';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
+interface ResumeProps { hideDownloadButton?: boolean; externalRef?: React.Ref<HTMLDivElement> }
 
-const Resume = () => {
+const Resume = ({ hideDownloadButton, externalRef }: ResumeProps) => {
   const resumeRef = useRef<HTMLDivElement>(null);
 
   const generatePDF = () => {
-    if (!resumeRef.current) return;
-
-    const options = {
-      margin: 0.5,
-      filename: 'Iboi_Benjamin_Resume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        letterRendering: true,
-        allowTaint: false
-      },
-      jsPDF: {
-        unit: 'in',
-        format: 'a4',
-        orientation: 'portrait'
-      }
-    };
-
-    html2pdf().set(options).from(resumeRef.current).save();
+    const link = document.createElement('a');
+    link.href = '/IBOI-BENJAMIN-RESUME.pdf';
+    link.download = 'IBOI-BENJAMIN-RESUME.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
-    <>
-      {/* Hidden Resume Preview Card for PDF generation only */}
-      <div className="fixed -top-[9999px] left-0 opacity-0 pointer-events-none">
-        <Card ref={resumeRef} className="bg-white text-black p-8 mb-6 shadow-2xl w-full max-w-4xl">
+    <div className="resume-container">
+      {!hideDownloadButton && (
+        <button className="download-btn" onClick={generatePDF}>
+          Download PDF
+        </button>
+      )}
+
+      <div className="resume" ref={resumeRef}>
         {/* Header */}
-        <div className="text-center mb-8 border-b border-gray-300 pb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">IBOI BENJAMIN ORIAIFO</h1>
-          <p className="text-lg text-gray-600 font-medium">FULL STACK DEVELOPER</p>
+        <h1 className="name">IBOI BENJAMIN</h1>
+        <p className="contact">
+          📧{" "}
+          <a href="mailto:benjamindlabs@gmail.com">
+            benjamindlabs@gmail.com
+          </a>{" "}
+          | 📞 +234 901 399 7660 |{" "}
+          <a
+            href="https://github.com/benjamindlabs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github.com/benjamindlabs
+          </a>{" "}
+          |{" "}
+          <a
+            href="https://iboibenjamin-portfolio.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            iboibenjamin-portfolio.vercel.app
+          </a>
+        </p>
+
+        {/* Professional Summary */}
+        <h2>PROFESSIONAL SUMMARY</h2>
+        <p>
+          Full-stack developer skilled in designing secure systems, building
+          scalable platforms, and optimizing performance to improve speed and
+          efficiency. Experienced in integrating AI-driven automation,
+          developing Web3 applications, and delivering clean, user-focused
+          interfaces.
+        </p>
+
+        {/* Professional Experience */}
+        <h2>PROFESSIONAL EXPERIENCE</h2>
+
+        <div className="job">
+          <h3>
+            Fullstack Developer (Contract) | Edlivky Hospital Management System
+          </h3>
+          <p className="job-meta">
+            Healthcare SaaS – Edlivky Medical Center | Feb 2025 – May 2025
+          </p>
+          <ul>
+            <li>
+              Built and deployed a modern hospital administration dashboard
+              managing hundreds of patient records, streamlining workflows for
+              doctors, nurses, and administrators.
+            </li>
+            <li>
+              Developed backend architecture in PHP/MySQL with role-based
+              access control, implementing secure authentication and encryption
+              measures to protect sensitive patient data.
+            </li>
+            <li>
+              Integrated Chart.js for real-time analytics dashboards, providing
+              actionable insights into hospital operations and improving
+              decision-making.
+            </li>
+            <li>
+              Reduced appointment scheduling time by 40% through the integration
+              of Flatpickr date handling, enhancing the booking experience for
+              both staff and patients.
+            </li>
+          </ul>
         </div>
 
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Left Column */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Contact Section */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Phone className="w-3 h-3 text-blue-600" />
-                </div>
-                CONTACT
-              </h3>
-              <div className="space-y-2 text-sm text-gray-700">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <span>(+234) 9013997660</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <span>benjamindlabs@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>Benin City, Edo State, Nigeria</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Github className="w-4 h-4" />
-                  <span>github.com/benjamindlabs</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
-                  <span>iboibenjamin-portfolio.vercel.app/</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Skills Section */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4">SKILLS</h3>
-              <div className="space-y-3 text-sm text-gray-700">
-                <div>
-                  <span className="font-medium">• Frontend:</span> React 18, Next.js 14, TypeScript, JavaScript, Vite
-                </div>
-                <div>
-                  <span className="font-medium">• Backend:</span> Supabase (Auth/DB), PHP, Node.js, REST APIs, MySQL, PostgreSQL
-                </div>
-                <div>
-                  <span className="font-medium">• Web3:</span> Solidity, Ethers.js, IPFS/Pinata, Hardhat, OpenZeppelin
-                </div>
-                <div>
-                  <span className="font-medium">• UI Libraries:</span> shadcn/ui, Radix UI, Flowbite, Headless UI
-                </div>
-              </div>
-            </div>
-
-            {/* Certification Section */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4">CERTIFICATION</h3>
-              <div className="space-y-3 text-sm text-gray-700">
-                <div>
-                  <div className="font-medium">Edlivky Coding Academy -</div>
-                  <div className="text-gray-600">Benin City, Nigeria</div>
-                  <div className="mt-2">
-                    <div>• Frontend Development Certificate - 2024</div>
-                    <div>• Backend Development (PHP) Certificate - 2024</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Soft Skills Section */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4">SOFT SKILLS</h3>
-              <div className="space-y-2 text-sm text-gray-700">
-                <div>• Communication & Team Leadership</div>
-                <div>• Self-Learning & Rapid Adaptation</div>
-                <div>• Problem-Solving & Critical Thinking</div>
-                <div>• Scalability</div>
-                <div>• Problem-Solving & Performance Tuning</div>
-                <div>• Creative Thinking & Initiative</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="lg:col-span-3 space-y-6">
-            {/* Profile Summary */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                </div>
-                PROFILE SUMMARY
-              </h3>
-              <div className="text-sm text-gray-700 leading-relaxed">
-                <p className="mb-3">
-                  Full-stack developer skilled in crafting and deploying modern web applications.
-                  Proficient in building scalable solutions using React, Next.js, and PHP.
-                  Strong expertise in performance optimization, secure backend design, and clean code workflows.
-                </p>
-                <p className="mb-3">
-                  Also an AI automation expert, with capabilities in AI-based media tools and automation.
-                </p>
-                <p>
-                  Known for leading with clarity and delivering with precision.
-                </p>
-              </div>
-            </div>
-
-            {/* Work Experience */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4">WORK EXPERIENCE</h3>
-              <div className="space-y-6">
-                {/* ArtMint Project */}
-                <div>
-                  <h4 className="font-bold text-gray-900">ArtMint NFT Marketplace</h4>
-                  <p className="text-sm text-gray-600 mb-2">art-mint.vercel.app</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    Decentralized NFT platform for minting, listing, and trading digital assets.
-                    Built with Next.js 14, Solidity, IPFS, and Supabase. Features wallet integration,
-                    smart contract execution, and secure asset storage.
-                  </p>
-                </div>
-
-                {/* Hospital System */}
-                <div>
-                  <h4 className="font-bold text-gray-900">Edlivky Hospital Admin System</h4>
-                  <p className="text-sm text-gray-600 mb-2">https://github.com/benjamindlabs/edlivkyhospital</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    Comprehensive hospital management dashboard built with PHP, Tailwind CSS, and MySQL.
-                    Features include patient records, appointment tracking, charts, and secure user authentication.
-                  </p>
-                </div>
-
-                {/* E-commerce */}
-                <div>
-                  <h4 className="font-bold text-gray-900">Rare Decor E-Commerce Site</h4>
-                  <p className="text-sm text-gray-600 mb-2">raredecor.vercel.app</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    A sleek online store for luxury interior decor, featuring user authentication,
-                    product browsing, shopping cart, and seamless checkout. Built with React, Supabase, and shadcn/ui.
-                  </p>
-                </div>
-
-                {/* NairaLend */}
-                <div>
-                  <h4 className="font-bold text-gray-900">NairaLend Financial Platform</h4>
-                  <p className="text-sm text-gray-600 mb-2">nairalend.vercel.app</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    A responsive loan application system with user authentication,
-                    role-based access control (RBAC), and an application tracking system.
-                    Built with React, Supabase, and modern validation libraries.
-                  </p>
-                </div>
-
-                {/* Coding Academy */}
-                <div>
-                  <h4 className="font-bold text-gray-900">Edlivky Coding Academy</h4>
-                  <p className="text-sm text-gray-600 mb-2">edlivkycodingschool.vercel.app</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    Built a modern education platform with interactive course browsing,
-                    theme switching, and clean UI components powered by React and Radix UI.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* AI & Automation Expertise */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4">AI & AUTOMATION EXPERTISE</h3>
-              <div className="space-y-3 text-sm text-gray-700">
-                <div>• Built AI tools using ManyChat, integrated with external APIs</div>
-                <div>• Edited and enhanced videos/images using Runway ML, Pika, and Midjourney</div>
-                <div>• Strategic use of tools like Cursor, v0.dev, and AI agents for development acceleration</div>
-                <div>• Streamlined workflows and pipeline acceleration</div>
-              </div>
-            </div>
-          </div>
+        <div className="job">
+          <h3>Web3 Fullstack Developer | ArtMint NFT Marketplace</h3>
+          <p className="job-meta">Blockchain Startup MVP | Aug 2024 – Present</p>
+          <ul>
+            <li>
+              Designed and developed an Ethereum-based NFT marketplace
+              supporting minting, trading, and auctions, enabling artists and
+              collectors to transact securely.
+            </li>
+            <li>
+              Created and optimized smart contracts in Solidity with Hardhat and
+              OpenZeppelin, reducing gas costs by 35% while ensuring contract
+              security and scalability.
+            </li>
+            <li>
+              Integrated IPFS for decentralized storage of media assets and
+              Supabase for real-time updates, ensuring seamless marketplace
+              functionality.
+            </li>
+            <li>
+              Engineered a Next.js 14 + Tailwind CSS UI, improving page load
+              speed by 35% and enhancing user experience with a responsive,
+              mobile-friendly design.
+            </li>
+          </ul>
         </div>
-        </Card>
+
+        <div className="job">
+          <h3>
+            Frontend Developer (Contract) | Edlivky School Management Portal
+          </h3>
+          <p className="job-meta">
+            Edlivky Coding Academy | Dec 2024 – Feb 2025
+          </p>
+          <ul>
+            <li>
+              Developed a responsive school management platform for over 250
+              student enrollments, enabling efficient course assignment,
+              tracking, and grading.
+            </li>
+            <li>
+              Built reusable UI components with shadcn/ui to ensure design
+              consistency across the platform and improve maintainability.
+            </li>
+            <li>
+              Collaborated on backend optimization in Node.js/MongoDB, reducing
+              API response times by 28% and improving platform responsiveness.
+            </li>
+          </ul>
+        </div>
+
+        <div className="job">
+          <h3>Fullstack Developer | Rare Decor Home</h3>
+          <p className="job-meta">
+            Luxury Interior E-commerce Platform | Jul 2024 – Nov 2024
+          </p>
+          <ul>
+            <li>
+              Developed a full-stack e-commerce platform featuring user
+              authentication, a secure payment gateway, and an AI chatbot for
+              customer support.
+            </li>
+            <li>
+              Built advanced product filtering and sorting features, improving
+              search speed by 50% and enhancing product discovery.
+            </li>
+            <li>
+              Integrated inventory management for over 200 SKUs, ensuring
+              real-time stock updates and automated low-stock alerts.
+            </li>
+          </ul>
+        </div>
+
+        <div className="job">
+          <h3>Fullstack Developer | NairaLend Financial Platform</h3>
+          <p className="job-meta">
+            Fintech Loan Management System | Aug 2023 – Jul 2024
+          </p>
+          <ul>
+            <li>
+              Created a secure loan application and management system with
+              authentication, user profiles, and loan tracking.
+            </li>
+            <li>
+              Designed a mobile-first UI that reduced form completion time by
+              40%, improving accessibility for mobile users.
+            </li>
+            <li>
+              Implemented repayment tracking and automated risk assessment
+              workflows, streamlining loan processing and reducing default risk.
+            </li>
+          </ul>
+        </div>
+
+        {/* Technical Expertise */}
+        <h2>TECHNICAL EXPERTISE</h2>
+        <p>
+          <strong>Languages:</strong> JavaScript, TypeScript, Solidity, PHP,
+          HTML5, CSS3 <br />
+          <strong>Frontend:</strong> React, Next.js, Tailwind CSS, shadcn/ui,
+          Flowbite, Alpine.js <br />
+          <strong>Backend:</strong> Node.js, Supabase, REST APIs, PostgreSQL,
+          MySQL, MongoDB <br />
+          <strong>Blockchain:</strong> Ethereum, Hardhat, Ethers.js, IPFS,
+          OpenZeppelin <br />
+          <strong>Tools:</strong> Git, GitHub, Postman, Vercel, ESLint, Prettier{" "}
+          <br />
+          <strong>Specialties:</strong> Web3 DApp Development, AI & Automation
+          Integration (Chatbots, n8n Workflows, ManyChat Agents), Performance
+          Optimization, Secure Authentication Systems
+        </p>
+
+        {/* Projects */}
+        <h2>PROJECTS</h2>
+        <ul>
+          <li>
+            <strong>Edlivky Hospital Management System</strong> –{" "}
+            <a
+              href="https://github.com/benjamindlabs/edlivkyhospital"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </li>
+          <li>
+            <strong>ArtMint NFT Marketplace</strong> –{" "}
+            <a
+              href="https://art-mint.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Demo
+            </a>
+          </li>
+          <li>
+            <strong>Edlivky School Management Portal</strong> –{" "}
+            <a
+              href="https://edlivkycodingschool.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Demo
+            </a>
+          </li>
+          <li>
+            <strong>Rare Decor Home</strong> –{" "}
+            <a
+              href="https://rare-decor.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Demo
+            </a>
+          </li>
+          <li>
+            <strong>NairaLend Financial Platform</strong> –{" "}
+            <a
+              href="https://nairalend.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Demo
+            </a>
+          </li>
+        </ul>
+
+        {/* Education */}
+        <h2>EDUCATION</h2>
+        <p>University of Benin – Public Administration | 2014 – 2018</p>
+
+        {/* Certifications */}
+        <h2>CERTIFICATIONS</h2>
+        <p>
+          Diploma in Fullstack Web Development – Edlivky Coding Academy (Aug
+          2025)
+        </p>
       </div>
-    </>
+    </div>
   );
 };
 

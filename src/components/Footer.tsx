@@ -18,8 +18,9 @@ const Footer = () => {
           >
             <Github size={32} />
           </a>
+
           <a
-            href="https://www.linkedin.com/in/benjamin-iboi-a14075379/"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 hover:scale-110 transform"

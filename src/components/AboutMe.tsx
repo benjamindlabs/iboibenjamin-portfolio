@@ -12,20 +12,17 @@ const AboutMe = () => {
             About Me
           </h2>
           
-          <div className="space-y-3 text-gray-300 dark:text-gray-200 leading-relaxed">
+          <div className="space-y-4 text-gray-300 dark:text-gray-200 leading-relaxed text-base">
             <p data-aos="fade-up" data-aos-delay="100">
-              Hi, I'm <span className="text-emerald-400 font-semibold">Iboi Benjamin</span> — a Full-stack developer 
-              with strong front-end and back-end skills, experienced in building production-ready applications using 
-              modern technologies like React, TypeScript, Node.js, PHP, and Supabase.
+              I'm <span className="text-emerald-400 font-semibold">Benjamin Iboi</span> — a Full-Stack Developer & AI Engineer based in Benin City, Nigeria, building web applications and AI-powered tools for clients across industries. My work spans fintech, e-commerce, healthcare, government platforms, and Web3 — with a focus on clean architecture, real database design, and products that actually ship and work in production.
             </p>
             
             <p data-aos="fade-up" data-aos-delay="200">
-              Proven leadership as a team lead on technical projects and adept at collaborating in both independent 
-              and team environments. Known for delivering clean, user-friendly, and scalable digital products.
+              What separates me from most developers is that I also work deeply with AI systems — integrating LLM APIs, building generative content pipelines, and engineering AI-powered features directly into products. I build solo, end-to-end. Faster delivery, direct communication, no handoff gaps.
             </p>
             
             <p data-aos="fade-up" data-aos-delay="300">
-              Based in Benin City, Edo State, Nigeria. Available for remote and on-site opportunities.
+              Based in Nigeria. Available for remote work globally — US, UK, Canada, Australia and beyond.
             </p>
           </div>
         </div>

@@ -16,26 +16,12 @@ const Navigation = () => {
   };
 
   const generatePDF = () => {
-    if (!resumeRef.current) return;
-
-    const options = {
-      margin: 0.5,
-      filename: 'Iboi_Benjamin_Resume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        letterRendering: true,
-        allowTaint: false
-      },
-      jsPDF: {
-        unit: 'in',
-        format: 'a4',
-        orientation: 'portrait'
-      }
-    };
-
-    html2pdf().set(options).from(resumeRef.current).save();
+    const link = document.createElement('a');
+    link.href = '/IBOI-BENJAMIN-RESUME.pdf';
+    link.download = 'IBOI-BENJAMIN-RESUME.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
   
   return (

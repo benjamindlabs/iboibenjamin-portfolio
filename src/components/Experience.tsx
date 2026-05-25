@@ -5,6 +5,20 @@ import { Card, CardContent } from './ui/card';
 const Experience = () => {
   const experiences = [
     {
+      title: "Full-Stack Developer (Contract)",
+      company: "Phomax E-commerce Platform",
+      period: "Jan 2026 – Present",
+      description: "Built full e-commerce platform from scratch — dual payment infrastructure (Paystack + Stripe), Pancake CRM integration, prescription flows, role-based admin controls, PostgreSQL database architecture.",
+      skills: ["Next.js", "Supabase", "Paystack", "Stripe", "Pancake CRM", "Vercel", "PostgreSQL"]
+    },
+    {
+      title: "Full-Stack Developer (Contract)",
+      company: "AutoVision National Initiative",
+      period: "Aug 2025 – Present",
+      description: "Built national web platform managing citizen applications and provider onboarding across Nigeria. RBAC for three user roles, behaviour analysis pipelines, optimised SQL for real-time monitoring.",
+      skills: ["Next.js", "Supabase", "PostgreSQL", "RBAC", "Vercel", "SQL Optimization"]
+    },
+    {
       title: "Frontend Development Certificate",
       company: "Edlivky Coding Academy",
       period: "2024",
@@ -17,13 +31,6 @@ const Experience = () => {
       period: "2025",
       description: "Advanced backend development specialization with modern server-side technologies",
       skills: ["PHP OOP", "Supabase", "MySQL", "REST APIs", "Database Design"]
-    },
-    {
-      title: "Team Leadership & Project Management",
-      company: "Professional Development",
-      period: "2024 - Present",
-      description: "Proven experience leading development teams and managing technical projects from conception to deployment",
-      skills: ["Team Leadership", "Project Management", "Code Review", "Mentoring", "Agile Methodology"]
     },
     {
       title: "AI & Automation Expertise",

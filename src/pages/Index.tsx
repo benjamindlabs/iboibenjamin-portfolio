@@ -52,7 +52,7 @@ const Index = () => {
                 
                 <div className="text-xl md:text-2xl" data-aos="fade-up" data-aos-delay="300">
                   <TypewriterText 
-                    texts={["front end developer", "full stack developer", "software engineer", "ai engineer"]}
+                    texts={["Full-Stack Developer", "AI Workflow Engineer", "I build products that work."]}
                     delay={500}
                     speed={80}
                     pauseTime={2000}
@@ -61,7 +61,7 @@ const Index = () => {
               </div>
               
               <p className="text-gray-400 dark:text-gray-300 text-lg max-w-md leading-relaxed" data-aos="fade-up" data-aos-delay="400">
-                Passionate about building scalable, modern web applications and AI solutions.
+                I build AI-powered web applications that work — from database to deployment, solo and end-to-end.
               </p>
 
 
