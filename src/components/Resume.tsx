@@ -1,29 +1,13 @@
 import React, { useRef } from "react";
-import html2pdf from "html2pdf.js";
 import "../resume.css";
 
-interface ResumeProps { hideDownloadButton?: boolean; externalRef?: React.Ref<HTMLDivElement> }
+interface ResumeProps { externalRef?: React.Ref<HTMLDivElement> }
 
-const Resume = ({ hideDownloadButton, externalRef }: ResumeProps) => {
+const Resume = ({ externalRef }: ResumeProps) => {
   const resumeRef = useRef<HTMLDivElement>(null);
-
-  const generatePDF = () => {
-    const link = document.createElement('a');
-    link.href = '/IBOI-BENJAMIN-RESUME.pdf';
-    link.download = 'IBOI-BENJAMIN-RESUME.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <div className="resume-container">
-      {!hideDownloadButton && (
-        <button className="download-btn" onClick={generatePDF}>
-          Download PDF
-        </button>
-      )}
-
       <div className="resume" ref={resumeRef}>
         {/* Header */}
         <h1 className="name">IBOI BENJAMIN</h1>
