@@ -143,81 +143,81 @@ const Projects = () => {
         {projects
           .filter((p) => p.title === 'Phomax' || p.title === 'AutoVision Initiative')
           .map((project, index) => (
-          <Card
-            key={project.id}
-            className="bg-gray-800/50 dark:bg-gray-700/50 border-gray-700 dark:border-gray-600 backdrop-blur-sm hover:bg-gray-800/70 dark:hover:bg-gray-700/70 transition-all duration-300 hover:scale-105 overflow-hidden group"
-            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-            data-aos-delay={index * 150}
-            data-aos-duration="1000"
-          >
-            <div className="relative overflow-hidden">
-              <img 
-                src={project.image} 
-                alt={project.title}
-                className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className="absolute top-3 left-3 flex gap-2">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(project.category)}`}>
-                  {project.category}
-                </span>
-                {project.badge && (
-                  <span className="px-2 py-1 rounded-full text-xs font-medium border bg-amber-500/20 text-amber-400 border-amber-500/30">
-                    {project.badge}
+            <Card
+              key={project.id}
+              className="bg-gray-800/50 dark:bg-gray-700/50 border-gray-700 dark:border-gray-600 backdrop-blur-sm hover:bg-gray-800/70 dark:hover:bg-gray-700/70 transition-all duration-300 hover:scale-105 overflow-hidden group"
+              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              data-aos-delay={index * 150}
+              data-aos-duration="1000"
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute top-3 left-3 flex gap-2">
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(project.category)}`}>
+                    {project.category}
                   </span>
-                )}
-              </div>
-            </div>
-            
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white dark:text-gray-100 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 dark:text-gray-200 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-                
-                <div className="text-emerald-400 text-xs font-medium">
-                  {project.stats}
-                </div>
-                
-                <div className="flex gap-3 pt-2">
-                  {project.liveUrl !== "#" && (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="flex-1 bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20"
-                      onClick={() => window.open(project.liveUrl, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
-                  )}
-                  {project.githubUrl !== "#" && (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="flex-1 bg-gray-500/10 border-gray-500/30 text-gray-400 hover:bg-gray-500/20"
-                      onClick={() => window.open(project.githubUrl, '_blank')}
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                  )}
-                  {project.liveUrl === "#" && project.githubUrl === "#" && (
-                    <div className="flex-1 text-center py-2">
-                      <span className="text-gray-500 dark:text-gray-400 text-sm italic">
-                        Coming soon
-                      </span>
-                    </div>
+                  {project.badge && (
+                    <span className="px-2 py-1 rounded-full text-xs font-medium border bg-amber-500/20 text-amber-400 border-amber-500/30">
+                      {project.badge}
+                    </span>
                   )}
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        ))}
+
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-white dark:text-gray-100 mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-300 dark:text-gray-200 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="text-emerald-400 text-xs font-medium">
+                    {project.stats}
+                  </div>
+
+                  <div className="flex gap-3 pt-2">
+                    {project.liveUrl !== "#" && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    )}
+                    {project.githubUrl !== "#" && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 bg-gray-500/10 border-gray-500/30 text-gray-400 hover:bg-gray-500/20"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </Button>
+                    )}
+                    {project.liveUrl === "#" && project.githubUrl === "#" && (
+                      <div className="flex-1 text-center py-2">
+                        <span className="text-gray-500 dark:text-gray-400 text-sm italic">
+                          Coming soon
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
       </div>
 
       <div className="text-center mb-12" data-aos="fade-up">
@@ -233,81 +233,81 @@ const Projects = () => {
         {projects
           .filter((p) => p.title !== 'Phomax' && p.title !== 'AutoVision Initiative')
           .map((project, index) => (
-          <Card
-            key={project.id}
-            className="bg-gray-800/50 dark:bg-gray-700/50 border-gray-700 dark:border-gray-600 backdrop-blur-sm hover:bg-gray-800/70 dark:hover:bg-gray-700/70 transition-all duration-300 hover:scale-105 overflow-hidden group"
-            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-            data-aos-delay={index * 150}
-            data-aos-duration="1000"
-          >
-            <div className="relative overflow-hidden">
-              <img 
-                src={project.image} 
-                alt={project.title}
-                className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className="absolute top-3 left-3 flex gap-2">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(project.category)}`}>
-                  {project.category}
-                </span>
-                {project.badge && (
-                  <span className="px-2 py-1 rounded-full text-xs font-medium border bg-amber-500/20 text-amber-400 border-amber-500/30">
-                    {project.badge}
+            <Card
+              key={project.id}
+              className="bg-gray-800/50 dark:bg-gray-700/50 border-gray-700 dark:border-gray-600 backdrop-blur-sm hover:bg-gray-800/70 dark:hover:bg-gray-700/70 transition-all duration-300 hover:scale-105 overflow-hidden group"
+              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              data-aos-delay={index * 150}
+              data-aos-duration="1000"
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute top-3 left-3 flex gap-2">
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(project.category)}`}>
+                    {project.category}
                   </span>
-                )}
-              </div>
-            </div>
-            
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white dark:text-gray-100 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 dark:text-gray-200 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-                
-                <div className="text-emerald-400 text-xs font-medium">
-                  {project.stats}
-                </div>
-                
-                <div className="flex gap-3 pt-2">
-                  {project.liveUrl !== "#" && (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="flex-1 bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20"
-                      onClick={() => window.open(project.liveUrl, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
-                  )}
-                  {project.githubUrl !== "#" && (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="flex-1 bg-gray-500/10 border-gray-500/30 text-gray-400 hover:bg-gray-500/20"
-                      onClick={() => window.open(project.githubUrl, '_blank')}
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                  )}
-                  {project.liveUrl === "#" && project.githubUrl === "#" && (
-                    <div className="flex-1 text-center py-2">
-                      <span className="text-gray-500 dark:text-gray-400 text-sm italic">
-                        Coming soon
-                      </span>
-                    </div>
+                  {project.badge && (
+                    <span className="px-2 py-1 rounded-full text-xs font-medium border bg-amber-500/20 text-amber-400 border-amber-500/30">
+                      {project.badge}
+                    </span>
                   )}
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        ))}
+
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-white dark:text-gray-100 mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-300 dark:text-gray-200 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="text-emerald-400 text-xs font-medium">
+                    {project.stats}
+                  </div>
+
+                  <div className="flex gap-3 pt-2">
+                    {project.liveUrl !== "#" && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    )}
+                    {project.githubUrl !== "#" && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 bg-gray-500/10 border-gray-500/30 text-gray-400 hover:bg-gray-500/20"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </Button>
+                    )}
+                    {project.liveUrl === "#" && project.githubUrl === "#" && (
+                      <div className="flex-1 text-center py-2">
+                        <span className="text-gray-500 dark:text-gray-400 text-sm italic">
+                          Coming soon
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
       </div>
     </section>
   );
