@@ -7,6 +7,28 @@ import { ExternalLink, Github } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
+      id: 8,
+      title: "Aximind",
+      description: "Full-featured AI CRM with conversational interface, memory, automation, voice, and analytics. Built as a single-tenant SaaS with workspace isolation, real-time collaboration, and AI-driven sales intelligence. Designed to replace traditional CRMs with an AI-native experience where users speak and the system acts.",
+      image: "/uploads/aximind.png",
+      category: "AI",
+      stats: "Next.js · TypeScript · Supabase · Groq AI · Vercel · Tailwind CSS · Recharts",
+      liveUrl: "https://aximind.vercel.app/",
+      githubUrl: "#",
+      badge: "AI · LIVE"
+    },
+    {
+      id: 9,
+      title: "C³OS Cold Outreach Scraper",
+      description: "Lead generation engine that runs daily, scraping 1000+ prospects and sending personalized emails automatically. Built with a modular architecture that makes it easy to add new data sources, proxies, and AI models. Designed for agencies running high-volume cold outreach campaigns with minimal human intervention.",
+      image: "/uploads/c3os.png",
+      category: "AI",
+      stats: "Python · FastAPI · Supabase · Tavily AI · Resend · GitHub Actions · BuiltWith API",
+      liveUrl: "https://c3os-scrapper.streamlit.app/",
+      githubUrl: "#",
+      badge: "AI · LIVE"
+    },
+    {
       id: 1,
       title: "Phomax",
       description: "Full e-commerce platform for smart glasses with prescription customisation per product, dual payment infrastructure supporting Nigerian customers via Paystack and international customers via Stripe, Apple Pay and Google Pay, Pancake CRM integration for automated sales tracking, and role-based admin controls. Built solo from design to deployment.",
@@ -110,15 +132,107 @@ const Projects = () => {
     <section id="projects" className="relative z-10 py-16">
       <div className="text-center mb-12" data-aos="fade-up">
         <h2 className="text-3xl md:text-4xl font-bold text-emerald-400 mb-4">
-          Projects
+          Commercial Projects
         </h2>
         <p className="text-gray-400 dark:text-gray-300 max-w-2xl mx-auto">
-          Commercial platforms and personal builds spanning fintech, e-commerce, healthcare, government, Web3, and AI — all live, all built solo end-to-end.
+          Enterprise-grade platforms built for government and businesses.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-16">
+        {projects
+          .filter((p) => p.title === 'Phomax' || p.title === 'AutoVision Initiative')
+          .map((project, index) => (
+          <Card
+            key={project.id}
+            className="bg-gray-800/50 dark:bg-gray-700/50 border-gray-700 dark:border-gray-600 backdrop-blur-sm hover:bg-gray-800/70 dark:hover:bg-gray-700/70 transition-all duration-300 hover:scale-105 overflow-hidden group"
+            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+            data-aos-delay={index * 150}
+            data-aos-duration="1000"
+          >
+            <div className="relative overflow-hidden">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute top-3 left-3 flex gap-2">
+                <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(project.category)}`}>
+                  {project.category}
+                </span>
+                {project.badge && (
+                  <span className="px-2 py-1 rounded-full text-xs font-medium border bg-amber-500/20 text-amber-400 border-amber-500/30">
+                    {project.badge}
+                  </span>
+                )}
+              </div>
+            </div>
+            
+            <CardContent className="p-6">
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white dark:text-gray-100 mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 dark:text-gray-200 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+                
+                <div className="text-emerald-400 text-xs font-medium">
+                  {project.stats}
+                </div>
+                
+                <div className="flex gap-3 pt-2">
+                  {project.liveUrl !== "#" && (
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="flex-1 bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20"
+                      onClick={() => window.open(project.liveUrl, '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Live Demo
+                    </Button>
+                  )}
+                  {project.githubUrl !== "#" && (
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="flex-1 bg-gray-500/10 border-gray-500/30 text-gray-400 hover:bg-gray-500/20"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                  )}
+                  {project.liveUrl === "#" && project.githubUrl === "#" && (
+                    <div className="flex-1 text-center py-2">
+                      <span className="text-gray-500 dark:text-gray-400 text-sm italic">
+                        Coming soon
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <div className="text-center mb-12" data-aos="fade-up">
+        <h2 className="text-3xl md:text-4xl font-bold text-emerald-400 mb-4">
+          Personal Projects
+        </h2>
+        <p className="text-gray-400 dark:text-gray-300 max-w-2xl mx-auto">
+          Independent builds, SaaS products, and experiments across various domains.
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
+        {projects
+          .filter((p) => p.title !== 'Phomax' && p.title !== 'AutoVision Initiative')
+          .map((project, index) => (
           <Card
             key={project.id}
             className="bg-gray-800/50 dark:bg-gray-700/50 border-gray-700 dark:border-gray-600 backdrop-blur-sm hover:bg-gray-800/70 dark:hover:bg-gray-700/70 transition-all duration-300 hover:scale-105 overflow-hidden group"
